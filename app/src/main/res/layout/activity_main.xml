@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    >
+
+    <data>
+        <import type="android.view.View"/>
+        <variable
+            name="LoginViewModel"
+            type="com.example.mvvm.LoginViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="20dp"
+        tools:context=".MainActivity"
+        >
+
+        <TextView
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:textSize="30sp"
+            android:gravity="center"
+            android:layout_marginBottom="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="MVVM Check login" />
+
+
+        <EditText
+            android:text="@={LoginViewModel.email}"
+            android:id="@+id/edEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:ems="10"
+            android:hint="Email"
+            android:inputType="textPersonName"
+            android:minHeight="48dp" />
+
+        <EditText
+            android:text="@={LoginViewModel.password}"
+            android:id="@+id/edPass"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:ems="10"
+            android:hint="Password"
+            android:inputType="textPersonName"
+            android:minHeight="48dp" />
+
+        <TextView
+            android:layout_marginBottom="20dp"
+            android:textColor="@{LoginViewModel.thanhCong?@color/green :@color/red}"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:gravity="center"
+            android:id="@+id/tvThongBao"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{LoginViewModel.thongbaoLogin}"
+            android:visibility="@{LoginViewModel.showThongBao?View.VISIBLE : View.GONE}"
+            />
+
+        <Button
+            android:onClick="@{()->LoginViewModel.onClickLogin()}"
+            android:textSize="20sp"
+            android:layout_marginBottom="20dp"
+            android:id="@+id/btnCheck"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="KIỂM TRA" />
+    </LinearLayout>
+
+</layout>
